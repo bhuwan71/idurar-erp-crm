@@ -25,6 +25,10 @@ mongoose.connection.on('error', (error) => {
   console.error(`2. 🚫 Error → : ${error.message}`);
 });
 
+mongoose.connection.once('open', () => {
+  console.log('🌐 Database connected successfully!');
+});
+
 const modelsFiles = globSync('./src/models/**/*.js');
 
 for (const filePath of modelsFiles) {
